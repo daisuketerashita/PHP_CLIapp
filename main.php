@@ -1,9 +1,10 @@
 <?php
 require_once('./classes/Human.php');
 require_once('./classes/Enemy.php');
+require_once('./classes/Brave.php');
 
 //インスタンス化
-$rec = new Human();
+$rec = new Brave();
 $slime = new Enemy();
 
 $rec->name = 'レック';
