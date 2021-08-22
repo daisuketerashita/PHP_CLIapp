@@ -9,8 +9,8 @@ class Enemy{
 
     //敵側の攻撃メソッド
     public function doAttack($human){
-        echo "『".$this->name."』の攻撃！<br>";
-        echo "【".$human->name."】に".$this->attackPoint."のダメージ！<br>";
+        echo "『".$this->name."』の攻撃！\n";
+        echo "【".$human->name."】に".$this->attackPoint."のダメージ！\n";
         $human->tookDamage($this->attackPoint);
     }
 
