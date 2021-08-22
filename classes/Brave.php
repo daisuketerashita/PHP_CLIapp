@@ -4,8 +4,8 @@ class Brave extends Human{
 
     //勇者のプロバティ
     const MAX_HITPOINT = 120; //最大HPの定義　定数
-    public $hitPoint = self::MAX_HITPOINT; //現在のHP
-    public $attackPoint = 30; //攻撃力
+    private $hitPoint = self::MAX_HITPOINT; //現在のHP
+    private $attackPoint = 30; //攻撃力
 
     public function doAttack($enemy){
         //乱数の発生
