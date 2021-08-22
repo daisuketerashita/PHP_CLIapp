@@ -4,22 +4,19 @@ require_once('./classes/Enemy.php');
 require_once('./classes/Brave.php');
 
 //インスタンス化
-$rec = new Brave();
-$slime = new Enemy();
-
-$rec->name = 'レック';
-$slime->name = 'スライム';
+$rec = new Brave('レック');
+$slime = new Enemy('スライム');
 
 $turn = 1;
 
 //どちらかが0になるまで繰り返す
-while($rec->hitPoint > 0 && $slime->hitPoint > 0){
+while($rec->getHitPoint() > 0 && $slime->getHitPoint() > 0){
     //ターン数の表示
     echo "★★★ $turn ターン目 ★★★\n";
 
     //現在のHPの表示
-    echo $rec->name."　：　".$rec->hitPoint."/".$rec::MAX_HITPOINT."\n";
-    echo $slime->name."　：　".$slime->hitPoint."/".$slime::MAX_HITPOINT."\n\n";
+    echo $rec->getName()."　：　".$rec->getHitPoint()."/".$rec::MAX_HITPOINT."\n";
+    echo $slime->getName()."　：　".$slime->getHitPoint()."/".$slime::MAX_HITPOINT."\n\n";
 
     //攻撃
     $rec->doAttack($slime);
@@ -32,7 +29,7 @@ while($rec->hitPoint > 0 && $slime->hitPoint > 0){
 }
 
 echo "★★★ 戦闘終了 ★★★\n";
-echo $rec->name."　：　".$rec->hitPoint."/".$rec::MAX_HITPOINT."\n";
-echo $slime->name."　：　".$slime->hitPoint."/".$slime::MAX_HITPOINT."\n\n";
+echo $rec->getName()."　：　".$rec->getHitPoint()."/".$rec::MAX_HITPOINT."\n";
+echo $slime->getName()."　：　".$slime->getHitPoint()."/".$slime::MAX_HITPOINT."\n\n";
 
 ?>

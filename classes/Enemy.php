@@ -7,10 +7,35 @@ class Enemy{
     private $hitPoint = 50; //現在のHP
     private $attackPoint = 10; //攻撃力
 
+    //名前をセットするコンストラクタ
+    public function __construct($name){
+        $this->name = $name;
+    }
+
+    //名前取得のゲッター
+    public function getName(){
+        return $this->name;
+    }
+
+    //名前登録のセッター
+    public function setName($name){
+        $this->name = $name;
+    }
+
+    //HPのゲッター
+    public function getHitPoint(){
+        return $this->hitPoint;
+    }
+
+    //攻撃力のゲッター
+    public function setAttackPoint(){
+        return $this->attackPoint;
+    }
+
     //敵側の攻撃メソッド
     public function doAttack($human){
-        echo "『".$this->name."』の攻撃！\n";
-        echo "【".$human->name."】に".$this->attackPoint."のダメージ！\n";
+        echo "『".$this->getName()."』の攻撃！\n";
+        echo "【".$human->getName()."】に".$this->attackPoint."のダメージ！\n";
         $human->tookDamage($this->attackPoint);
     }
 

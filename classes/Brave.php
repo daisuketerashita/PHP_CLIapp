@@ -7,15 +7,20 @@ class Brave extends Human{
     private $hitPoint = self::MAX_HITPOINT; //現在のHP
     private $attackPoint = 30; //攻撃力
 
+    //名前をセットするコンストラクタ
+    public function __construct($name){
+        parent::__construct($name,$this->hitPoint,$this->attackPoint);
+    }
+
     public function doAttack($enemy){
         //乱数の発生
         if(rand(1,3) == 1){
             //特技の攻撃力
             $specialSkill = $this->attackPoint * 1.5;
             //特技の発動
-            echo "『".$this->name."』の特技が発動した！\n";
+            echo "『".$this->getName()."』の特技が発動した！\n";
             echo "『アルテマソード』！！\n";
-            echo $enemy->name."に".$specialSkill."のダメージ！\n";
+            echo $enemy->getName()."に".$specialSkill."のダメージ！\n";
             $enemy->tookDamage($specialSkill);
         }else{
             parent::doAttack($enemy);
