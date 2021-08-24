@@ -8,8 +8,9 @@ class Enemy{
     private $attackPoint = 10; //攻撃力
 
     //名前をセットするコンストラクタ
-    public function __construct($name){
+    public function __construct($name,$attackPoint){
         $this->name = $name;
+        $this->attackPoint = $attackPoint;
     }
 
     //名前取得のゲッター

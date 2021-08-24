@@ -11,7 +11,7 @@ class Sage extends Human{
         parent::__construct($name,$this->hitPoint,$this->attackPoint);
     }
 
-    public function doAttackWhiteMage($enemy, $human)
+    public function doAttackHoimi($enemy, $human)
     {
         if (rand(1, 2) === 1) {
             //ホイミの回復数値
