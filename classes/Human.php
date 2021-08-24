@@ -49,4 +49,12 @@ class Human{
             $this->hitPoint = 0;
         }
     }
+
+    //ホイミの回復メソッド
+    public function recoveryDamage($hoimi, $target){
+        $this->hitPoint += $hoimi;
+        if($this->hitPoint > $target::MAX_HITPOINT){
+            $this->hitPoint = $target::MAX_HITPOINT;
+        }
+    }
 }
