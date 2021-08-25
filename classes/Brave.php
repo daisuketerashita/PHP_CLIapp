@@ -12,7 +12,15 @@ class Brave extends Human{
         parent::__construct($name,$this->hitPoint,$this->attackPoint);
     }
 
-    public function doAttack($enemy){
+    public function doAttack($enemies){
+        //自身のHPが0か確かめる
+        if($this->hitPoint <= 0){
+            return false;
+        }
+
+        $enemyIndex = rand(0, count($enemies) - 1);
+        $enemy = $enemies[$enemyIndex];
+
         //乱数の発生
         if(rand(1,3) == 1){
             //特技の攻撃力
@@ -23,7 +31,7 @@ class Brave extends Human{
             echo $enemy->getName()."に".$specialSkill."のダメージ！\n";
             $enemy->tookDamage($specialSkill);
         }else{
-            parent::doAttack($enemy);
+            parent::doAttack($enemies);
         }
         return true;
     }

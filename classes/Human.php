@@ -35,7 +35,14 @@ class Human{
     }
 
     //味方側の攻撃メソッド
-    public function doAttack($enemy){
+    public function doAttack($enemies){
+        // チェック１：自身のHPが0かどうか
+        if ($this->hitPoint <= 0) {
+            return false;
+        }
+        $enemyIndex = rand(0, count($enemies) - 1);
+        $enemy = $enemies[$enemyIndex];
+
         echo "『".$this->getName()."』の攻撃！\n";
         echo "【".$enemy->getName()."】に".$this->attackPoint."のダメージ！\n";
         $enemy->tookDamage($this->attackPoint);

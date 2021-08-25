@@ -41,13 +41,11 @@ while(!$isFinishFlg){
 
     //味方側の攻撃
     foreach($members as $member){
-        $enemyIndex = rand(0, count($enemies) - 1);
-        $enemy = $enemies[$enemyIndex];
         if(get_class($member) == 'Sage'){
             //賢者の場合は、味方のオブジェクトも渡す
-            $member->doAttackHoimi($enemy, $member);
+            $member->doAttackHoimi($enemies, $members);
         }else{
-            $member->doAttack($enemy);
+            $member->doAttack($enemies);
         }
         echo "\n";
     }
@@ -55,9 +53,7 @@ while(!$isFinishFlg){
 
     //敵側の攻撃
     foreach ($enemies as $enemy) {
-        $memberIndex = rand(0, count($members) - 1);
-        $member = $members[$memberIndex];
-        $enemy->doAttack($member);
+        $enemy->doAttack($members);
         echo "\n";
     }
 

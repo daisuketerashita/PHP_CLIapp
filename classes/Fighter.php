@@ -12,7 +12,15 @@ class Fighter extends Human
         parent::__construct($name,$this->hitPoint,$this->attackPoint);
     }
 
-    public function doAttack($enemy){
+    public function doAttack($enemies){
+
+        // チェック１：自身のHPが0かどうか
+        if ($this->hitPoint <= 0) {
+            return false;
+        }
+        $enemyIndex = rand(0, count($enemies) - 1);
+        $enemy = $enemies[$enemyIndex];
+
         if(rand(1,2) == 1){
             //特殊の攻撃力
             $SpecialPunch = $this->intelligence * 1.5;
@@ -22,7 +30,7 @@ class Fighter extends Human
             echo $enemy->getName() . " に " . $SpecialPunch . " のダメージ！\n";
             $enemy->tookDamage($SpecialPunch);
         }else {
-            parent::doAttack($enemy);
+            parent::doAttack($enemies);
         }
         return true;
     }

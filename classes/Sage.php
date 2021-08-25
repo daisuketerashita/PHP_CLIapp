@@ -11,8 +11,16 @@ class Sage extends Human{
         parent::__construct($name,$this->hitPoint,$this->attackPoint);
     }
 
-    public function doAttackHoimi($enemy, $human)
+    public function doAttackHoimi($enemies, $humans)
     {
+        // チェック１：自身のHPが0かどうか
+        if ($this->hitPoint <= 0) {
+            return false;
+        }
+
+        $humanIndex = rand(0, count($humans) - 1);
+        $human = $humans[$humanIndex];
+
         if (rand(1, 2) === 1) {
             //ホイミの回復数値
             $hoimi = $this->intelligence * 1.5;
@@ -22,7 +30,7 @@ class Sage extends Human{
             echo $human->getName() . " のHPを " . $hoimi . " 回復！\n";
             $human->recoveryDamage($hoimi, $human);
         } else {
-            parent::doAttack($enemy);
+            parent::doAttack($enemies);
         }
         return true;
     }
