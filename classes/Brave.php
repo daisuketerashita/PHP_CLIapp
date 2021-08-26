@@ -13,13 +13,12 @@ class Brave extends Human{
     }
 
     public function doAttack($enemies){
-        //自身のHPが0か確かめる
-        if($this->hitPoint <= 0){
+        // 自分のHPが0以上か、敵のHPが0以上かなどをチェックするメソッドを用意。
+        if (!$this->isEnableAttack($enemies)) {
             return false;
         }
-
-        $enemyIndex = rand(0, count($enemies) - 1);
-        $enemy = $enemies[$enemyIndex];
+        // ターゲットの決定
+        $enemy = $this->selectTarget($enemies);
 
         //乱数の発生
         if(rand(1,3) == 1){

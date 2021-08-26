@@ -9,17 +9,17 @@ class Fighter extends Human
 
     //名前をセットするコンストラクタ
     public function __construct($name){
-        parent::__construct($name,$this->hitPoint,$this->attackPoint);
+        parent::__construct($name,$this->hitPoint,$this->attackPointl, $this->intelligence);
     }
 
     public function doAttack($enemies){
 
-        // チェック１：自身のHPが0かどうか
-        if ($this->hitPoint <= 0) {
+        // 自分のHPが0以上か、敵のHPが0以上かなどをチェックするメソッドを用意。
+        if (!$this->isEnableAttack($enemies)) {
             return false;
         }
-        $enemyIndex = rand(0, count($enemies) - 1);
-        $enemy = $enemies[$enemyIndex];
+        // ターゲットの決定
+        $enemy = $this->selectTarget($enemies);
 
         if(rand(1,2) == 1){
             //特殊の攻撃力
